@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import './styles/WeatherCard.css';
+import './styles/weatherCard.css';
 
 const WeatherCard = ({weather, temp, setTextInput}) => {
 
