@@ -31,6 +31,7 @@ function App() {
     navigator.geolocation.getCurrentPosition(success);
   }, []);
 
+  
 
   useEffect(() => {
     if (coords){
