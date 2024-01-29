@@ -13,8 +13,8 @@ function App() {
   const [weather, setWeather] = useState();
   const [temp,setTemp] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const [textInput, setTextInput] = useState('');
-  const [finder, setFinder] = useState();
+  // const [textInput, setTextInput] = useState('');
+  // const [finder, setFinder] = useState();
   const [hasError, setHasError] = useState(false);
 
   
@@ -31,7 +31,7 @@ function App() {
     navigator.geolocation.getCurrentPosition(success);
   }, []);
 
-  
+
 
   useEffect(() => {
     if (coords){
@@ -58,21 +58,21 @@ function App() {
 
  
    
-  useEffect(() => {
-    if (textInput) {  
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${textInput}&appid=${APIkey}`;
-      axios.get(url)
-       .then(res => {
-          const obj = {
-            celsius: (res.data.main.temp - 273.15).toFixed(2),
-            fahrenheit: ((res.data.main.temp- 273.15) * (9/5) + 32).toFixed(2),
-          }  
-          setTemp(obj);
-          setFinder(res.data)
-        })
-        .catch(err => console.log(err));
-    }
-  }, [textInput]);
+  // useEffect(() => {
+  //   if (textInput) {  
+  //     const url = `https://api.openweathermap.org/data/2.5/weather?q=${textInput}&appid=${APIkey}`;
+  //     axios.get(url)
+  //      .then(res => {
+  //         const obj = {
+  //           celsius: (res.data.main.temp - 273.15).toFixed(2),
+  //           fahrenheit: ((res.data.main.temp- 273.15) * (9/5) + 32).toFixed(2),  
+  //         }  
+  //         setTemp(obj);
+  //         setFinder(res.data)
+  //       })
+  //       .catch(err => console.log(err));
+  //   }
+  // }, [textInput]);
   
   
 
@@ -85,17 +85,19 @@ function App() {
         isLoading ?
          <h2 className='loader'>Loading...</h2>
          :
-         textInput ?
+        //  textInput ?
+        //    <WeatherCard 
+        //        weather={finder}
+        //        temp={temp}
+        //        setTextInput={setTextInput}
+        //        hasError={hasError}
+        //    />
+        //    :     
            <WeatherCard 
-             weather={finder}
-             temp={temp}
-             setTextInput={setTextInput}
-           />
-           :     
-           <WeatherCard 
-             weather={weather}
-             temp={temp}
-             setTextInput={setTextInput}
+               weather={weather}
+               temp={temp}
+               setTextInput={setTextInput}
+               hasError={hasError}
            />
       }  
     </div>

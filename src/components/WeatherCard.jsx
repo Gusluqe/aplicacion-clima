@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import './styles/weatherCard.css';
 
-const WeatherCard = ({weather, temp, setTextInput}) => {
+const WeatherCard = ({weather, temp, setTextInput, hasError}) => {
 
     const [isCelsius, setIsCelsius] = useState(true);
 
@@ -12,22 +12,22 @@ const WeatherCard = ({weather, temp, setTextInput}) => {
 
     }
 
-    const city = useRef();
+    // const city = useRef();
   
 
-    const handleForm = event => {
-        event.preventDefaut();
-        setTextInput(city.current.value.toLowerCase().trim());
+    // const handleForm = event => {
+    //     event.preventDefaut();
+    //     setTextInput(city.current.value.toLowerCase().trim());
         
-    }
+    // }
 
   return (
     <section className='weather'>
         <h1 className='weather__title'>Weather App</h1> 
-        <form className='weather__form' onSubmit={handleForm}>
+        {/* <form className='weather__form' onSubmit={handleForm}>
             <input type="text" ref={city} />
             <button>Search</button>
-        </form>   
+        </form>          */}
         <h2 className='weather__city'>{weather?.name}, {weather?.sys.country}</h2>
         <article className='weather__container1'>
             <figure className='weather__fig'>
