@@ -13,7 +13,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [textInput, setTextInput] = useState('');
   const [finder, setFinder] = useState();
-  const [hasError, setHasError] = useState(false);
+  
 
   
   
@@ -80,24 +80,17 @@ function App() {
   return (
     <div className='app'>    
       {
-        isLoading ?
-         <h2 className='loader'>Loading...</h2>
-         :
-         textInput ?
-           <WeatherCard 
-               weather={finder}
-               temp={temp}
-               setTextInput={setTextInput}
-               hasError={hasError}
-           />
-           :     
-           <WeatherCard 
-               weather={weather}
-               temp={temp}
-               setTextInput={setTextInput}
-               hasError={hasError}
-           />
-      }  
+        isLoading ? (
+          <h2 className="loader">Loading...</h2>
+        ) : textInput ? (
+          <WeatherCard weather={finder} temp={temp} setTextInput={setTextInput} />
+        ) : (
+          <WeatherCard
+            weather={weather}
+            temp={temp}
+            setTextInput={setTextInput}
+          />
+        )}
     </div>
   )
 }

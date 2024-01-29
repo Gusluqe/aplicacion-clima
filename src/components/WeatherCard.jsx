@@ -16,7 +16,7 @@ const WeatherCard = ({weather, temp, setTextInput, hasError}) => {
   
 
     const handleForm = event => {
-        event.preventDefaut();
+        event.preventDefault();
         setTextInput(city.current.value.toLowerCase().trim());
         
     }
@@ -24,10 +24,10 @@ const WeatherCard = ({weather, temp, setTextInput, hasError}) => {
   return (
     <section className='weather'>
         <h1 className='weather__title'>Weather App</h1> 
-        {/* <form className='weather__form' onSubmit={handleForm}>
-            <input type="text" readOnlyef={city} />
+        <form className='weather__form' onSubmit={handleForm}>
+            <input type="text" ref={city} />
             <button>Search</button>
-        </form>          */}
+        </form>         
         <h2 className='weather__city'>{weather?.name}, {weather?.sys.country}</h2>
         <article className='weather__container1'>
             <figure className='weather__fig'>
