@@ -5,16 +5,14 @@ import WeatherCard from './components/WeatherCard';
 const APIkey = '4ed5f33dc8c2232ef32b967bf8990202';
 
 
-function App() {
-
-  
+function App() {  
 
   const [coords, setCoords] = useState();
   const [weather, setWeather] = useState();
   const [temp,setTemp] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  // const [textInput, setTextInput] = useState('');
-  // const [finder, setFinder] = useState();
+  const [textInput, setTextInput] = useState('');
+  const [finder, setFinder] = useState();
   const [hasError, setHasError] = useState(false);
 
   
@@ -58,21 +56,21 @@ function App() {
 
  
    
-  // useEffect(() => {
-  //   if (textInput) {  
-  //     const url = `https://api.openweathermap.org/data/2.5/weather?q=${textInput}&appid=${APIkey}`;
-  //     axios.get(url)
-  //      .then(res => {
-  //         const obj = {
-  //           celsius: (res.data.main.temp - 273.15).toFixed(2),
-  //           fahrenheit: ((res.data.main.temp- 273.15) * (9/5) + 32).toFixed(2),  
-  //         }  
-  //         setTemp(obj);
-  //         setFinder(res.data)
-  //       })
-  //       .catch(err => console.log(err));
-  //   }
-  // }, [textInput]);
+  useEffect(() => {
+    if (textInput) {  
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${textInput}&appid=${APIkey}`;
+      axios.get(url)
+       .then(res => {
+          const obj = {
+            celsius: (res.data.main.temp - 273.15).toFixed(2),
+            fahrenheit: ((res.data.main.temp- 273.15) * (9/5) + 32).toFixed(2),  
+          }  
+          setTemp(obj);
+          setFinder(res.data)
+        })
+        .catch(err => console.log(err));
+    }
+  }, [textInput]);
   
   
 
@@ -85,14 +83,14 @@ function App() {
         isLoading ?
          <h2 className='loader'>Loading...</h2>
          :
-        //  textInput ?
-        //    <WeatherCard 
-        //        weather={finder}
-        //        temp={temp}
-        //        setTextInput={setTextInput}
-        //        hasError={hasError}
-        //    />
-        //    :     
+         textInput ?
+           <WeatherCard 
+               weather={finder}
+               temp={temp}
+               setTextInput={setTextInput}
+               hasError={hasError}
+           />
+           :     
            <WeatherCard 
                weather={weather}
                temp={temp}
