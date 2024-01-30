@@ -1,6 +1,6 @@
 // WeatherCard.js
 import React, { useRef, useState } from "react";
-import "./styles/WeatherCard.css";
+import "./styles/WeatherCard.jsx";
 
 const WeatherCard = ({
   weather,
